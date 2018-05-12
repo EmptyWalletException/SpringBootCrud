@@ -1,9 +1,12 @@
 package com.kingguanzhang.crud.config;
 
+import com.kingguanzhang.crud.component.LoginHandlerInterceptor;
 import com.kingguanzhang.crud.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -27,6 +30,15 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/login.html").setViewName("login");
         registry.addViewController("/board").setViewName("dashboard");
         registry.addViewController("/board.html").setViewName("dashboard");
+        registry.addViewController("/loginRedirect").setViewName("dashboard");
+    }
+
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/","/index","/login","/index.html","/login.html","/user/login","/**/*.css","/**/*.js");
+
     }
 
     @Bean

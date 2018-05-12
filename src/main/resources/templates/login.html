@@ -18,13 +18,14 @@
 </head>
 
 <body class="text-center">
-<form class="form-signin">
+<form class="form-signin" th:action="@{/user/login}" method="post">
    <!-- <img class="mb-4"  alt="" width="72" height="72">-->
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.signin}">Please sign in</h1>
+    <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
     <label for="inputUserName" class="sr-only" th:text="#{login.userName}">User Name</label>
-    <input type="email" id="inputUserName" class="form-control" placeholder="Email address" th:placeholder="#{login.userName}" />
+    <input type="text" name="username" id="inputUserName" class="form-control" placeholder="Email address" th:placeholder="#{login.userName}" value="admin"/>
     <label for="inputPassword" class="sr-only" th:text="#{login.userPassword}">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" th:placeholder="#{login.userPassword}" />
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" th:placeholder="#{login.userPassword}" value="test"/>
     <div class="checkbox mb-3">
         <label>
             <input type="checkbox" value="remember-me" /> [[#{login.rememberMe}]]
