@@ -51,4 +51,9 @@ public class EmployeeDao {
         employeeMap.put(employee.getId(),employee);
     }
 
+    public void update(Employee employee) {
+        employeeMap.remove(employee.getId());
+        employee.setDept(departmentDao.getDepartment(employee.getDept().getId()));
+        employeeMap.put(employee.getId(),employee);
+    }
 }

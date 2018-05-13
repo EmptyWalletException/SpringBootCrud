@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Employee {
 
+
+
     private Integer id;
     private String name;
     private String email;
@@ -15,7 +17,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, String name, String email, int gender, Date birth, Department deptId) {
+    public Employee(Integer id, String name, String email, int gender, Date birth, Department dept) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -72,5 +74,6 @@ public class Employee {
 
     public void setDept(Department dept) {
         this.dept = dept;
+
     }
 }

@@ -3,6 +3,7 @@ package com.kingguanzhang.crud.dao;
 import com.kingguanzhang.crud.pojo.Department;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +23,10 @@ public class DepartmentDao {
 
     public Department getDepartment(Integer id){
         return department.get(id);
+    }
+
+    public Collection<Department> getDepts(){
+        return department.values();
     }
 
 }
