@@ -44,4 +44,8 @@ public class EmpService {
     public void update(Employee employee) {
         employeeDao.update(employee);
     }
+
+    public void delete(Integer id) {
+        employeeDao.delete(id);
+    }
 }

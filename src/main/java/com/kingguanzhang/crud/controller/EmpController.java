@@ -51,4 +51,10 @@ public class EmpController {
         empService.update(employee);
         return "redirect:/emps";
     }
+
+    @DeleteMapping("/emp/{id}")
+    public String delete(@PathVariable("id") Integer id){
+        empService.delete(id);
+        return "redirect:/emps";
+    }
 }
