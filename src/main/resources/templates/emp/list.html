@@ -57,15 +57,16 @@
                     </thead>
                     <tbody>
                     <tr th:each="emp:${emps}">
-                        <td th:text="${emp.id}">11111</td>
-                        <td th:text="${emp.name}">Jason</td>
-                        <td th:text="${emp.email}">111@111.com</td>
-                        <td th:text="${emp.gender}==1?'男':'女'">男</td>
-                        <td th:text="${#dates.format(emp.birth,'yyyy-MM-dd')}">1949-9-30</td>
-                        <td th:text="${emp.dept.name}">dept</td>
+                        <td th:text="${emp.empId}">11111</td>
+                        <td th:text="${emp.empName}">Jason</td>
+                        <td th:text="${emp.empEmail}">111@111.com</td>
+                        <td th:text="${emp.empGender}=='M'?'男':'女'">男</td>
+                        <!--<td th:text="${emp.empBirth}">111@111.com</td>-->
+                        <td th:text="${#dates.format(emp.empBirth,'yyyy-MM-dd')}">1949-9-30</td>
+                        <td th:text="${emp.department.deptName}">dept</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" th:href="@{/emp/}+${emp.id}">修改</a>
-                            <button class="btn btn-danger btn-sm deleteButton" th:attr="deleteUrl=@{/emp/}+${emp.id}" >删除</button>
+                            <a class="btn btn-primary btn-sm" th:href="@{/emp/}+${emp.empId}">修改</a>
+                            <button class="btn btn-danger btn-sm deleteButton" th:attr="deleteUrl=@{/emp/}+${emp.empId}" >删除</button>
                         </td>
                     </tr>
 

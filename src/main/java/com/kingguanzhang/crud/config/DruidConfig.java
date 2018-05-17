@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
+//@Configuration
 public class DruidConfig {
 
     @ConfigurationProperties(prefix = "spring.datasource")
@@ -29,7 +29,7 @@ public class DruidConfig {
      * 配置一个管理后台的Servlet
      * @return
      */
-    @Bean
+   // @Bean
     public ServletRegistrationBean statViewServlet(){
         ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
 
@@ -46,7 +46,7 @@ public class DruidConfig {
      * 配置一个web监控的拦截器
      * @return
      */
-    @Bean
+   // @Bean
     public FilterRegistrationBean webStatFilter(){
         FilterRegistrationBean bean = new FilterRegistrationBean();
 

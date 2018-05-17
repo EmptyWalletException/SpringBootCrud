@@ -1,9 +1,8 @@
 package com.kingguanzhang.crud.service;
 
-import com.kingguanzhang.crud.dao.DepartmentDao;
-import com.kingguanzhang.crud.dao.EmployeeDao;
-import com.kingguanzhang.crud.pojo.Department;
+import com.kingguanzhang.crud.mapper.EmployeeMapper;
 import com.kingguanzhang.crud.pojo.Employee;
+import com.kingguanzhang.crud.pojo.EmployeeExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,39 +12,40 @@ import java.util.Collection;
 public class EmpService {
 
    @Autowired
-   private EmployeeDao employeeDao;
+   EmployeeMapper employeeMapper;
 
-   @Autowired
-   private DepartmentDao departmentDao;
+
 
     public EmpService() {
     }
 
 
     public Collection<Employee> getEmps() {
-        Collection<Employee> employees = employeeDao.getEmps();
+        //这里限制一下查询的数据量
+        EmployeeExample employeeExample = new EmployeeExample();
+        EmployeeExample.Criteria criteria = employeeExample.createCriteria();
+        criteria.andEmpIdBetween(1,15);
+
+        Collection<Employee> employees = employeeMapper.selectByExampleWithDept(employeeExample);
         return employees;
     }
 
-    public Collection<Department> getDepts() {
-        Collection<Department> depts = departmentDao.getDepts();
-        return depts;
-    }
+
 
     public void save(Employee employee) {
-        employeeDao.save(employee);
+        employeeMapper.insertSelective(employee);
     }
 
-    public Employee getEmps(Integer id) {
-        Employee employee = employeeDao.get(id);
+    public Employee getEmp(Integer id) {
+        Employee employee = employeeMapper.selectByPrimaryKeyWithDept(id);
         return employee;
     }
 
     public void update(Employee employee) {
-        employeeDao.update(employee);
+        employeeMapper.updateByPrimaryKey(employee);
     }
 
     public void delete(Integer id) {
-        employeeDao.delete(id);
+        employeeMapper.deleteByPrimaryKey(id);
     }
 }

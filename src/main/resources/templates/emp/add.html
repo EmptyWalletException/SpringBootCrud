@@ -40,36 +40,36 @@
                 <input type="hidden" name="_method" value="put" th:if="${emp != null}"/>
 
                 <!--当传入emp后,生成带id的隐藏input元素-->
-                <input type="hidden" name="id" th:value="${emp.id}" th:if="${emp != null}"/>
+                <input type="hidden" name="empId" th:value="${emp.empId}" th:if="${emp != null}"/>
 
                 <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Name</label>
                     <div class="col-sm-10">
-                        <input type="name" name="name" class="form-control" id="inputName" placeholder="Name" th:value="${emp != null}?${emp.name}">
+                        <input type="name" name="empName" class="form-control" id="inputName" placeholder="Name" th:value="${emp != null}?${emp.empName}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email@3kingdom.com" th:value="${emp != null}?${emp.email}">
+                        <input type="email" name="empEmail" class="form-control" id="inputEmail3" placeholder="Email@3kingdom.com" th:value="${emp != null}?${emp.empEmail}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputDate" class="col-sm-2 control-label">Birth</label>
                     <div class="col-sm-10">
-                        <input type="date" name="birth" class="form-control" id="inputDate" th:value="${emp != null}?${#dates.format(emp.birth,'yyyy-MM-dd')}">
+                        <input type="date" name="empBirth" class="form-control" id="inputDate" th:value="${emp != null}?${#dates.format(emp.empBirth,'yyyy-MM-dd')}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label  class="col-sm-2 control-label">Geder</label>
                     <div class="col-sm-10">
                         <label class="radio-inline">
-                            <input type="radio" name="gender" id="inlineRadio1" value="1" th:checked="${emp != null}?${emp.gender == 1}"> 男
+                            <input type="radio" name="empGender" id="inlineRadio1" value="M" th:checked="${emp != null}?${emp.empGender == 'M'}"> 男
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender" id="inlineRadio2" value="0" th:checked="${emp != null}?${emp.gender != 1}"> 女
+                            <input type="radio" name="empGender" id="inlineRadio2" value="W" th:checked="${emp != null}?${emp.empGender != 'M'}"> 女
                         </label>
                     </div>
                 </div>
@@ -77,8 +77,8 @@
                 <div class="form-group">
                     <label for="inputDate" class="col-sm-2 control-label">Department</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="dept.id" >
-                            <option th:each="dept:${depts}" th:value="${dept.id}" th:text="${dept.name}" th:selected="${emp != null}?${emp.dept.id == dept.id}">1</option>
+                        <select class="form-control" name="empDeptId" >
+                            <option th:each="dept:${depts}" th:value="${dept.deptId}" th:text="${dept.deptName}" th:selected="${emp != null}?${emp.department.deptId == dept.deptId}">1</option>
                         </select>
                     </div>
                 </div>
